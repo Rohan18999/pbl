@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expensie Tracker</title>
-    <link rel="stylesheet" href="scripts.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -15,15 +15,15 @@
         <div class="summary-container">
             <div class="summary-item">
                 <strong>Total Income</strong>
-                <p>100000</p>
+                <input class="amount" type="number" name="quantity" id="quantity" min="0" step="1000">
             </div>
             <div class="summary-item">
                 <strong>Expense Amount</strong>
-                <p>50000</p>
+                <input class="amount" type="number" name="quantity" id="quantity" min="0" step="1000">
             </div>
             <div class="summary-item">
                 <strong>Available Balance</strong>
-                <p>99950</p>
+                <input class="amount" type="number" name="quantity" id="quantity" min="0" step="1000">
             </div>
         </div>
         <div class="table-container">
@@ -37,29 +37,19 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Laptop</td>
-                        <td>50000</td>
-                        <td>10-12-2024</td>
-                    </tr>
-                    <tr>
-                        <td>Sofa</td>
-                        <td>34000</td>
-                        <td>20-08-2024</td>
-                    </tr>
-                    <tr>
-                        <td>TV</td>
-                        <td>5678</td>
-                        <td>2024</td>
-                    </tr>
-                    <tr>
-                        <td>Mobile</td>
-                        <td>5544</td>
-                        <td>2-3-2023</td>
-                    </tr>
+                        <td>
+                            <input class="js-input" type="text">
+                        </td>
+                        <td>
+                            <input class="js-number" type="number" min="0">
+                        </td>
+                        <td>
+                            <input class="js-date" type="date">
+                        </td>
                 </tbody>
             </table>
         </div>
-        <button class="add-button">Add</button>
+        <button class="add-button" onclick="newExpense()">Add</button>
     </div>
 
 
