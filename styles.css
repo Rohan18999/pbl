@@ -9,7 +9,7 @@ body{
     justify-items: center;
     margin-top: 20px;
     padding: 10px 20px;
-    border: 2px solid black;
+    border: 2px solid rgb(67, 53, 53);
     font-size: 16px;
     color: gray;
     border: none;
@@ -30,7 +30,6 @@ body{
     margin-left: 30px;
     
 }
-
 .summary-container {
     display: flex;
     justify-content: center;
@@ -42,7 +41,9 @@ body{
     margin-right: 30px;
     flex: 1;
     text-align: center;
-    padding: 10px;
+    padding:10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     border: 1px solid black;
     border-radius: 10px;
     background-color: white;

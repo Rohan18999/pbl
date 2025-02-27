@@ -60,7 +60,4 @@ function removeElement(index){
 
 document.addEventListener("DOMContentLoaded", displayContent);
 
-const incomeList =  JSON.parse(localStorage.getItem("expenses")) || [];
-function submitIncome(){
-    
-}
+
