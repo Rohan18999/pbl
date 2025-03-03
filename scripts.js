@@ -1,8 +1,13 @@
 const trackerList = JSON.parse(localStorage.getItem("expenses")) || [];
-let totalIncome = 0
+let totalIncome = parseFloat(localStorage.getItem("totalIncome")) || 0;
+let totalExpense = parseFloat(localStorage.getItem("totalExpense")) || 0;
+let totalBalance = parseFloat(localStorage.getItem("totalBalance")) || 0;
 
 function saveContent(){
     localStorage.setItem("expenses", JSON.stringify(trackerList));
+    localStorage.setItem("totalIncome", totalIncome)
+    localStorage.setItem("totalExpense", totalExpense)
+    localStorage.setItem("totalBalance", totalBalance)
 }
 
 
@@ -55,21 +60,42 @@ function displayContent(){
 
 function removeElement(index){
     if (index >= 0 && index < trackerList.length) {
-        totalIncome -= parseFloat(trackerList[index].amount || 0);
-        trackerList.splice(index,1)   
+        if (trackerList[index].category === "Income"){
+            totalIncome -= parseFloat(trackerList[index].amount || 0);  
+        } else {
+            totalExpense -= parseFloat(trackerList[index].amount || 0);
+        }
+        trackerList.splice(index,1);  
     }
     saveContent();
     displayContent();
     addDetails();
 }
 
-document.addEventListener("DOMContentLoaded", displayContent);
+document.addEventListener("DOMContentLoaded", () =>{
+    displayContent();
+    addDetails();
+});
+document.addEventListener("DOMContentLoaded",totalIncome,totalExpense,totalBalance)
 
 function addDetails(){
     let totalIncomeElement = document.querySelector('.total-income')
+    let totalExpenseElement = document.querySelector('.total-expense')
+    let totalBalanceElement = document.querySelector('.total-balance')
     let totalIncome = 0
+    let totalExpense = 0
+    let totalBalance = 0
     trackerList.forEach((value) =>{
-        totalIncome+= parseFloat(value.amount || 0)
+        if (value.category === "Income"){
+            totalIncome+= parseFloat(value.amount || 0)
+        } else {
+            totalExpense+= parseFloat(value.amount || 0)
+        }
     })
+    totalBalance = totalIncome - totalExpense
     totalIncomeElement.innerText = totalIncome
+    totalExpenseElement.innerText = totalExpense
+    totalBalanceElement.innerText = totalBalance
+
+    saveContent();
 }
