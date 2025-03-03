@@ -25,18 +25,21 @@ function newExpense(event){
     const dateElement = document.getElementById('expense-date')
     const date = dateElement.value
 
-    trackerList.push(
-        {
-            name,
-            amount,
-            category,
-            date
-        }
-    )
-    saveContent();
-    displayContent();
-    addDetails();
-
+    if (name && amount && category && date){
+        trackerList.push(
+            {
+                name,
+                amount,
+                category,
+                date
+            }
+        )
+        saveContent();
+        displayContent();
+        addDetails();
+    } else {
+        alert("⚠️ Warning! Something went wrong.");
+    }
 }
 
 function displayContent(){
@@ -50,8 +53,7 @@ function displayContent(){
             <td>${value.category}</td>
             <td>${value.date}</td>
             <td>
-                <button>Edit</button>
-                <button onclick="removeElement(${index})">Delete</button>
+                <button class="delete-button" onclick="removeElement(${index})">Delete</button>
             </td>
         </tr>
         `);
